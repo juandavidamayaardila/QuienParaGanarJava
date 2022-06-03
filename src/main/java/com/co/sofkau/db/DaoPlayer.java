@@ -8,9 +8,9 @@ public class DaoPlayer extends DAO{
 
     private ArrayList<Player> playerArrayList;
 
-    public DaoPlayer() {
+    public DaoPlayer(){
         super();
-        this.playerArrayList = new ArrayList<>();
+        playerArrayList = new ArrayList<>();
     }
 
     public ArrayList<Player> getPlayers(File file){
@@ -31,7 +31,7 @@ public class DaoPlayer extends DAO{
                 NombreP = line[0];
                 score = Integer.valueOf(line[1]);
 
-                Player player = new Player(NombreP, score) ;
+                Player player = new Player() ;
                 playerArrayList.add(player);
             }
             scan.close();
@@ -58,11 +58,12 @@ public class DaoPlayer extends DAO{
         }
     }
 
+    /*
     public ArrayList<Player> sortMinFirst(){
 
         ArrayList<Player> copyPlayers = new ArrayList<>();
         copyPlayers.addAll(this.playerArrayList);
         copyPlayers.sort();
         return copyPlayers;
-    }
+    }*/
 }
