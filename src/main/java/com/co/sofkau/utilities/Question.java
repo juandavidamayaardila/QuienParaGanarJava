@@ -3,22 +3,16 @@ package com.co.sofkau.utilities;
 public class Question {
 
     private String description;
-    private String answerTrue;
-    private String answerFalse1;
+    private String[] options = new String[4];
+    private String correctAnswer;
+    private Integer category;
 
-    private String answerFalse2;
-    private String answerFalse3;
-    private String answerFalse4;
 
-    public Question(String description, String answerTrue, String answerFalse1, String answerFalse2,
-                    String answerFalse3, String answerFalse4)
-    {
+    public Question(String description, String[] options, String correctAnswer, Integer category) {
         this.description = description;
-        this.answerTrue = answerTrue;
-        this.answerFalse1 = answerFalse1;
-        this.answerFalse2 = answerFalse2;
-        this.answerFalse3 = answerFalse3;
-        this.answerFalse4 = answerFalse4;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
+        this.category = category;
     }
 
     public String getDescription() {
@@ -29,59 +23,27 @@ public class Question {
         this.description = description;
     }
 
-    public String getAnswerTrue() {
-        return answerTrue;
+    public String[] getOptions() {
+        return options;
     }
 
-    public void setAnswerTrue(String answerTrue) {
-        this.answerTrue = answerTrue;
+    public void setOptions(String[] options) {
+        this.options = options;
     }
 
-    public String getAnswerFalse1() {
-        return answerFalse1;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setAnswerFalse1(String answerFalse1) {
-        this.answerFalse1 = answerFalse1;
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
-    public String getAnswerFalse2() {
-        return answerFalse2;
+    public Integer getCategory() {
+        return category;
     }
 
-    public void setAnswerFalse2(String answerFalse2) {
-        this.answerFalse2 = answerFalse2;
-    }
-
-    public String getAnswerFalse3() {
-        return answerFalse3;
-    }
-
-    public void setAnswerFalse3(String answerFalse3) {
-        this.answerFalse3 = answerFalse3;
-    }
-
-    public String getAnswerFalse4() {
-        return answerFalse4;
-    }
-
-    public void setAnswerFalse4(String answerFalse4) {
-        this.answerFalse4 = answerFalse4;
-    }
-
-    public Boolean validateAnswer(){
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Question{" +
-                "description='" + description + '\'' +
-                ", answerTrue='" + answerTrue + '\'' +
-                ", answerFalse1='" + answerFalse1 + '\'' +
-                ", answerFalse2='" + answerFalse2 + '\'' +
-                ", answerFalse3='" + answerFalse3 + '\'' +
-                ", answerFalse4='" + answerFalse4 + '\'' +
-                '}';
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 }
