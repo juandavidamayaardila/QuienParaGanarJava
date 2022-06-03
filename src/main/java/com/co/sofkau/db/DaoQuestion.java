@@ -10,8 +10,9 @@ public class DaoQuestion extends DAO{
 
     private List<Question> questionArrayList;
 
-    public DaoQuestion(List<Question> questionArrayList) {
-        super(questionArrayList);
+    public DaoQuestion() {
+        super();
+        makeQuestions();
     }
 
     private void makeQuestions() {
@@ -55,7 +56,7 @@ public class DaoQuestion extends DAO{
     public Question selectQuestionRandom(Integer category){
 
         Random random = new Random();
-        Integer numberQuestion = random.nextInt(5 + 1) + 1;
+        Integer numberQuestion = random.nextInt(4 + 1) + 1;
 
         Question[] questionsForCategory = new Question[5];
         Integer i = 0;

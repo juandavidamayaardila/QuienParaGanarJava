@@ -13,8 +13,9 @@ public class DaoPlayer extends DAO{
 
     private ArrayList<Player> playerArrayList;
 
-    public DaoPlayer(List<Question> questionArrayList) {
-        super(questionArrayList);
+    public DaoPlayer(){
+        super();
+        playerArrayList = new ArrayList<>();
     }
 
     public ArrayList<Player> getPlayers(File file){
@@ -35,7 +36,7 @@ public class DaoPlayer extends DAO{
                 NombreP = line[0];
                 score = Integer.valueOf(line[1]);
 
-                Player player = new Player(NombreP, score) ;
+                Player player = new Player() ;
                 playerArrayList.add(player);
             }
             scan.close();

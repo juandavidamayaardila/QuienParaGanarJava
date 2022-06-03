@@ -1,5 +1,16 @@
 package com.co.sofkau.utilities;
 
+import java.util.Objects;
+
+/**
+ * Clase que represetan las preguntas, y sus respectivas
+ * respuestas.
+ *
+ *  @version  01.02.003 03/06/2022
+ *  @author JD-Amaya
+ *  @since 01.
+ *
+ */
 public class Question {
 
     private String description;
@@ -45,5 +56,15 @@ public class Question {
 
     public void setCategory(Integer category) {
         this.category = category;
+    }
+
+    /**
+     * Determina si la respuesta es correcta o no.
+     *
+     * @param userAnswer respuesta del usuario
+     * @return true o false, si es correcta
+     */
+    public Boolean validateAnswer(Integer userAnswer){
+        return Objects.equals(options[userAnswer].toString(), this.correctAnswer);
     }
 }

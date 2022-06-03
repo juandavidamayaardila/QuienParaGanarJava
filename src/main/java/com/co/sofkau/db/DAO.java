@@ -13,7 +13,7 @@ public class DAO {
 
 
 
-    public DAO(List<Question> questionArrayList) {
+    public DAO() {
         this.fileQuestions = new File("questions.txt");
         this.filePlayers = new File("players.txt");
     }
