@@ -1,20 +1,16 @@
 package com.co.sofkau.db;
 
 import com.co.sofkau.utilities.Player;
-import com.co.sofkau.utilities.Question;
-
-import javax.swing.*;
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DaoPlayer extends DAO{
 
     private ArrayList<Player> playerArrayList;
 
-    public DaoPlayer(List<Question> questionArrayList) {
-        super(questionArrayList);
+    public DaoPlayer() {
+        super();
+        this.playerArrayList = new ArrayList<>();
     }
 
     public ArrayList<Player> getPlayers(File file){
@@ -60,5 +56,13 @@ public class DaoPlayer extends DAO{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public ArrayList<Player> sortMinFirst(){
+
+        ArrayList<Player> copyPlayers = new ArrayList<>();
+        copyPlayers.addAll(this.playerArrayList);
+        copyPlayers.sort();
+        return copyPlayers;
     }
 }
