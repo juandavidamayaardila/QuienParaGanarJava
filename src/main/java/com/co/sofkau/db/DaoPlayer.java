@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class DaoPlayer extends DAO{
 
+    public File txtPlayers = new File("players.txt");
     private ArrayList<Player> playerArrayList;
 
     public DaoPlayer(){
@@ -13,12 +14,20 @@ public class DaoPlayer extends DAO{
         playerArrayList = new ArrayList<>();
     }
 
-    public ArrayList<Player> getPlayers(File file){
+    public File getTxtPlayers() {
+        return txtPlayers;
+    }
+
+    public void setTxtPlayers(File txtPlayers) {
+        this.txtPlayers = txtPlayers;
+    }
+
+    public ArrayList<Player> getPlayers(){
 
 
         try {
             //lectura de datos
-            BufferedReader scan = new BufferedReader(new FileReader(file.getName()));
+            BufferedReader scan = new BufferedReader(new FileReader(txtPlayers.getName()));
             String s;
             String s2 = "";
             String NombreP;

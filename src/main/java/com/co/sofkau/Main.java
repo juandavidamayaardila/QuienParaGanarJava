@@ -14,15 +14,13 @@ import java.util.List;
 public class Main {
     static Message messages = Message.getInstance();
     static MyScanner scanner = MyScanner.getInstance();
-
     static DaoPlayer daoPlayer = new DaoPlayer();
 
-    private static List<Player> listPlayer = new ArrayList<>();
+    private static ArrayList<Player> listPlayer = new ArrayList<>();
 
     public static void main(String[] args) {
         init();
     }
-
 
     public static void init() {
         Boolean flag = true;
@@ -47,7 +45,7 @@ public class Main {
     private static Boolean selectOption(String option, Player player) {
         switch (option) {
             case "1":
-                play(player);
+                play(player);//play()
                 break;
             case "2":
                 showRanking();
@@ -96,7 +94,7 @@ public class Main {
 
     private static void showRanking(){
 
-        //messages.showHistory(daoPlayer.getPlayers());
+        messages.showHistory(daoPlayer.getPlayers());
 
     }
 
@@ -104,7 +102,7 @@ public class Main {
 
         player.setScore(scoreFinal);
         listPlayer.add(player);
-        //daoPlayer.savePlayers();
+        daoPlayer.savePlayers(daoPlayer.getTxtPlayers(), listPlayer);
     }
     private static void restart(){
 

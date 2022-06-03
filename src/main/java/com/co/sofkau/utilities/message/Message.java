@@ -6,7 +6,6 @@ import com.co.sofkau.utilities.Question;
 import org.jboss.logging.Logger;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Message {
 
@@ -31,15 +30,13 @@ public class Message {
                 4 - Salir""");
     }
 
-
-
     public void showQuestion(Question question) {
         logger.info(
                 question.getDescription() + "\n" +
                 " 1. " + question.getOptions()[0] +  "\n" +
                 " 2. " + question.getOptions()[1]  +  "\n" +
-                " 3. " + question.getOptions()[3]  +  "\n" +
-                " 4. " + question.getOptions()[2]);
+                " 3. " + question.getOptions()[2]  +  "\n" +
+                " 4. " + question.getOptions()[3]);
     }
 
     public void showMessageWin(Player player) {
@@ -67,6 +64,7 @@ public class Message {
             logger.info(player.toString());
         });
     }
+
     public void showMessage(String message) {
         logger.info(message);
     }
