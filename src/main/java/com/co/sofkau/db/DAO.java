@@ -1,13 +1,10 @@
 package com.co.sofkau.db;
 
-import com.co.sofkau.utilities.Player;
 import com.co.sofkau.utilities.Question;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.Random;
 
 public class DAO {
 
@@ -22,6 +19,7 @@ public class DAO {
     }
 
     public File getFileQuestions() {
+
         return fileQuestions;
     }
 
