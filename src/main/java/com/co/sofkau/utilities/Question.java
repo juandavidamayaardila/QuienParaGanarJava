@@ -3,30 +3,47 @@ package com.co.sofkau.utilities;
 public class Question {
 
     private String description;
-    private String[] answers = new String[4];
-    private String correcAnswer;
-    private String category;
+    private String[] options = new String[4];
+    private String correctAnswer;
+    private Integer category;
 
-    public Question(String description, String[] answers, String correcAnswer, String category) {
+
+    public Question(String description, String[] options, String correctAnswer, Integer category) {
         this.description = description;
-        this.answers = answers;
-        this.correcAnswer = correcAnswer;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
         this.category = category;
     }
 
-    public Boolean validateAnswer(){
-        return true;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "description='" + description + '\'' +
-                ", answerTrue='" + answerTrue + '\'' +
-                ", answerFalse1='" + answerFalse1 + '\'' +
-                ", answerFalse2='" + answerFalse2 + '\'' +
-                ", answerFalse3='" + answerFalse3 + '\'' +
-                ", answerFalse4='" + answerFalse4 + '\'' +
-                '}';
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 }
