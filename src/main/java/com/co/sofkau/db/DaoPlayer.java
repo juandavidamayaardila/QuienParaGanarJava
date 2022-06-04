@@ -1,16 +1,12 @@
 package com.co.sofkau.db;
 
 import com.co.sofkau.utilities.Player;
-import com.co.sofkau.utilities.Question;
-
-import javax.swing.*;
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DaoPlayer extends DAO{
 
+    public File txtPlayers = new File("players.txt");
     private ArrayList<Player> playerArrayList;
 
     public DaoPlayer(){
@@ -18,12 +14,22 @@ public class DaoPlayer extends DAO{
         playerArrayList = new ArrayList<>();
     }
 
-    public ArrayList<Player> getPlayers(File file){
+    public File getTxtPlayers() {
+        return txtPlayers;
+    }
 
+    public void setTxtPlayers(File txtPlayers) {
+        this.txtPlayers = txtPlayers;
+    }
+
+    public ArrayList<Player> getPlayers(){
 
         try {
             //lectura de datos
-            BufferedReader scan = new BufferedReader(new FileReader(file.getName()));
+            if (Boolean.FALSE.equals(txtPlayers.exists())){
+                createFile();
+            }
+            BufferedReader scan = new BufferedReader(new FileReader(txtPlayers.getName()));
             String s;
             String s2 = "";
             String NombreP;
@@ -37,6 +43,8 @@ public class DaoPlayer extends DAO{
                 score = Integer.valueOf(line[1]);
 
                 Player player = new Player() ;
+                player.setName(NombreP);
+                player.setScore(score);
                 playerArrayList.add(player);
             }
             scan.close();
@@ -46,7 +54,16 @@ public class DaoPlayer extends DAO{
 
         return this.playerArrayList;
     }
-    
+
+    private void createFile(){
+        try {
+            FileWriter file = new FileWriter("players.txt");
+            file.close();
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+
     public void savePlayers(File file, ArrayList<Player> players) {
 
         PrintWriter output = null;
@@ -62,4 +79,13 @@ public class DaoPlayer extends DAO{
             ex.printStackTrace();
         }
     }
+
+    /*
+    public ArrayList<Player> sortMinFirst(){
+
+        ArrayList<Player> copyPlayers = new ArrayList<>();
+        copyPlayers.addAll(this.playerArrayList);
+        copyPlayers.sort();
+        return copyPlayers;
+    }*/
 }

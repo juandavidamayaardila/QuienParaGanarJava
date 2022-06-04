@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author Piter Velasquez
+ * @version 03/06/2022
+ */
 public class DaoQuestion extends DAO{
 
     private List<Question> questionArrayList;
@@ -53,10 +57,11 @@ public class DaoQuestion extends DAO{
 
     }
 
+
     public Question selectQuestionRandom(Integer category){
 
         Random random = new Random();
-        Integer numberQuestion = random.nextInt(4 + 1) + 1;
+        Integer numberQuestion = random.nextInt(5) + 1;
 
         Question[] questionsForCategory = new Question[5];
         Integer i = 0;

@@ -14,10 +14,9 @@ import java.util.List;
 public class Main {
     static Message messages = Message.getInstance();
     static MyScanner scanner = MyScanner.getInstance();
-
     static DaoPlayer daoPlayer = new DaoPlayer();
 
-    private static List<Player> listPlayer = new ArrayList<>();
+    private static ArrayList<Player> listPlayer = new ArrayList<>();
 
     private static int flagGeneral = 0;
 
@@ -25,11 +24,11 @@ public class Main {
         init();
     }
 
-
     public static void init() {
         Boolean flag = true;
         Integer option;
         Player player = new Player();
+        listPlayer = daoPlayer.getPlayers();
 
         while (Boolean.TRUE.equals(flag)) {
             try {
@@ -50,7 +49,7 @@ public class Main {
     private static Boolean selectOption(String option, Player player) {
         switch (option) {
             case "1":
-                play(player);
+                play(player);//play()
                 break;
             case "2":
                 showRanking();
@@ -59,8 +58,7 @@ public class Main {
                 restart();
                 break;
             case "4":
-                outGame();
-                break;
+                return false;
 
             default:
                 messages.pressAnyKeyToContinue();
@@ -86,8 +84,9 @@ public class Main {
                 messages.showMessageQuestionCorrect(player, player.getScore());
                 if(category == 5){
                     messages.showMessageWin(player);
-                    saveHistoy(player,0);
+                    saveHistory(player);
                     flag = false;
+                    flagGeneral = 1;
                 }
                 category += 1;
             } else {
@@ -99,22 +98,21 @@ public class Main {
     }
 
     private static void showRanking(){
-        messages.showMessage("prueba");
-        //messages.showHistory(daoPlayer.getPlayers());
+
+        messages.showHistory(listPlayer);
         flagGeneral = 1;
     }
 
-    private static void saveHistoy(Player player, Integer scoreFinal){
-        messages.showMessage("prueba");
-        //player.setScore(scoreFinal);
-        //listPlayer.add(player);
-        //daoPlayer.savePlayers();
+
+    private static void saveHistory(Player player){
+
+        listPlayer.add(player);
+        daoPlayer.savePlayers(daoPlayer.getTxtPlayers(), listPlayer);
+
     }
     private static void restart(){
-
-    }
-
-    private static void outGame(){
         flagGeneral = 0;
     }
+
+
 }
