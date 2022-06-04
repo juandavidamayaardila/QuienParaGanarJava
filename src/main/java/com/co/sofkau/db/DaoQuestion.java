@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Piter Velasquez
  * @version 03/06/2022
  */
-public class DaoQuestion extends DAO{
+public class DaoQuestion {
 
 
     private List<Question> questionArrayList;
