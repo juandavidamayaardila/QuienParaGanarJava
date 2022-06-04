@@ -18,6 +18,8 @@ public class Main {
 
     private static ArrayList<Player> listPlayer = new ArrayList<>();
 
+    private static int flagGeneral = 0;
+
 
     public static void main(String[] args) {
         init();
@@ -27,13 +29,15 @@ public class Main {
         Boolean flag = true;
         Integer option;
         Player player = new Player();
+        listPlayer = daoPlayer.getPlayers();
 
         while (Boolean.TRUE.equals(flag)) {
             try {
-                messages.showWelcome();
-                player.setName(scanner.getString());
-                player.setScore(0);
-
+                if(flagGeneral == 0) {
+                    messages.showWelcome();
+                    player.setName(scanner.getString());
+                    player.setScore(0);
+                }
                 messages.showMenu();
                 flag = selectOption(scanner.getString(), player);
             } catch (MyException myException) {
@@ -55,8 +59,8 @@ public class Main {
                 restart();
                 break;
             case "4":
-                outGame();
-                break;
+                return false;
+
             default:
                 messages.pressAnyKeyToContinue();
         }
@@ -82,8 +86,9 @@ public class Main {
                 messages.showMessageQuestionCorrect(player, player.getScore());
                 if(category == 5){
                     messages.showMessageWin(player);
-                    saveHistoy(player,0);
+                    saveHistory(player);
                     flag = false;
+                    flagGeneral = 1;
                 }
                 category += 1;
             } else {
@@ -96,22 +101,18 @@ public class Main {
 
     private static void showRanking(){
 
-        messages.showHistory(daoPlayer.getPlayers());
-
+        messages.showHistory(listPlayer);
+        flagGeneral = 1;
     }
 
-    private static void saveHistoy(Player player, Integer scoreFinal){
 
-        player.setScore(scoreFinal);
+    private static void saveHistory(Player player){
+
         listPlayer.add(player);
         daoPlayer.savePlayers(daoPlayer.getTxtPlayers(), listPlayer);
+
     }
     private static void restart(){
-
+        flagGeneral = 0;
     }
-
-    private static void outGame(){
-
-    }
-
 }

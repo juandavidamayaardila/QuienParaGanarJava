@@ -24,7 +24,6 @@ public class DaoPlayer extends DAO{
 
     public ArrayList<Player> getPlayers(){
 
-
         try {
             //lectura de datos
             if (Boolean.FALSE.equals(txtPlayers.exists())){
