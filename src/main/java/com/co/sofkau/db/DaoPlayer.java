@@ -33,17 +33,19 @@ public class DaoPlayer extends DAO{
             BufferedReader scan = new BufferedReader(new FileReader(txtPlayers.getName()));
             String s;
             String s2 = "";
-            String NombreP;
+            String nombreP;
             Integer score;
 
             int unidades;
             while ((s = scan.readLine()) != null) {
                 s2 += s + "\n";
                 String[] line = s.split("-");
-                NombreP = line[0];
+                nombreP = line[0];
                 score = Integer.valueOf(line[1]);
 
-                Player player = new Player() ;
+                Player player = new Player();
+                player.setName(nombreP);
+                player.setScore(score);
                 playerArrayList.add(player);
             }
             scan.close();
@@ -79,12 +81,4 @@ public class DaoPlayer extends DAO{
         }
     }
 
-    /*
-    public ArrayList<Player> sortMinFirst(){
-
-        ArrayList<Player> copyPlayers = new ArrayList<>();
-        copyPlayers.addAll(this.playerArrayList);
-        copyPlayers.sort();
-        return copyPlayers;
-    }*/
 }

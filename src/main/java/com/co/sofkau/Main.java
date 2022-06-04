@@ -18,6 +18,7 @@ public class Main {
 
     private static ArrayList<Player> listPlayer = new ArrayList<>();
 
+
     public static void main(String[] args) {
         init();
     }
@@ -65,6 +66,7 @@ public class Main {
     /**
      * Inicia el juego
      */
+
     private static void play(Player player) {
         Integer category = 1;
         Integer score = 0;
@@ -111,4 +113,5 @@ public class Main {
     private static void outGame(){
 
     }
+
 }
