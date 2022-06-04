@@ -7,10 +7,16 @@ import com.co.sofkau.utilities.MyScanner;
 import com.co.sofkau.utilities.Player;
 import com.co.sofkau.utilities.Question;
 import com.co.sofkau.utilities.message.Message;
-
 import java.util.ArrayList;
-import java.util.List;
 
+
+/**
+ * Clase que inicializa la aplicacion.
+ *
+ * @author JD-Amaya
+ * @version 01.02.003 03/06/2022
+ * @since 01.
+ */
 public class Main {
     static Message messages = Message.getInstance();
     static MyScanner scanner = MyScanner.getInstance();
@@ -24,15 +30,19 @@ public class Main {
         init();
     }
 
+    /**
+     * Metodo iniciador de la aplicación
+     * ejecuta un ciclo infinito hasta que el
+     * usuario determine salir del juego.
+     */
     public static void init() {
         Boolean flag = true;
-        Integer option;
         Player player = new Player();
         listPlayer = daoPlayer.getPlayers();
 
         while (Boolean.TRUE.equals(flag)) {
             try {
-                if(flagGeneral == 0) {
+                if (flagGeneral == 0) {
                     messages.showWelcome();
                     player.setName(scanner.getString());
                     player.setScore(0);
@@ -46,6 +56,13 @@ public class Main {
         }
     }
 
+    /**
+     * Permite direccionar al metodo seleccionado por el usuario.
+     *
+     * @param option opcion seleccionda por el usuario.
+     * @param player Jugador actual.
+     * @return true para o false para seguir ejecutando el menu
+     */
     private static Boolean selectOption(String option, Player player) {
         switch (option) {
             case "1":
@@ -59,7 +76,6 @@ public class Main {
                 break;
             case "4":
                 return false;
-
             default:
                 messages.pressAnyKeyToContinue();
         }
@@ -67,22 +83,22 @@ public class Main {
     }
 
     /**
-     * Inicia el juego
+     * Inicia el juego, ejecuta el ciclo infinito
+     * hasta que el usuario elija la opcion de salir.
      */
     private static void play(Player player) {
-        Integer category = 1;
-        Integer score = 0;
+        int category = 1;
         DaoQuestion daoQuestion = new DaoQuestion();
-        Boolean flag = true;
+        boolean flag = true;
         while (Boolean.TRUE.equals(flag)) {
             Question question = daoQuestion.selectQuestionRandom(category);
 
             messages.showQuestion(question);
             Integer answerUser = scanner.getInteger();
-            if (question.validateAnswer(answerUser-1)) {
+            if (Boolean.TRUE.equals(question.validateAnswer(answerUser - 1))) {
                 player.incrementScore();
                 messages.showMessageQuestionCorrect(player, player.getScore());
-                if(category == 5){
+                if (category == 5) {
                     messages.showMessageWin(player);
                     saveHistory(player);
                     flag = false;
@@ -90,29 +106,41 @@ public class Main {
                 }
                 category += 1;
             } else {
-                messages.showMessageQuestionInCorrect(player);
+                messages.showMessageQuestionInCorrect();
                 messages.showMessageGameOver(player);
                 flag = false;
             }
         }
     }
 
-    private static void showRanking(){
+    /**
+     * Metodo que muestra el todo el ranking el historial
+     * del todos los jugadores.
+     */
+    private static void showRanking() {
 
         messages.showHistory(listPlayer);
         flagGeneral = 1;
     }
 
-
-    private static void saveHistory(Player player){
+    /**
+     * Permite guardar en el archivo player.txt
+     * el historial de los jugadores.
+     *
+     * @param player Jugador en curso.
+     */
+    private static void saveHistory(Player player) {
 
         listPlayer.add(player);
         daoPlayer.savePlayers(daoPlayer.getTxtPlayers(), listPlayer);
-
     }
-    private static void restart(){
+
+    /**
+     * Permite reiniciar el juego,
+     * igualamos a cero para romper el ciclo.
+     */
+    private static void restart() {
         flagGeneral = 0;
     }
-
 
 }
