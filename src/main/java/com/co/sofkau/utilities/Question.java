@@ -13,10 +13,10 @@ import java.util.Objects;
  */
 public class Question {
 
-    private String description;
-    private String[] options = new String[4];
-    private String correctAnswer;
-    private Integer category;
+    private final String description;
+    private final String[] options;
+    private final String correctAnswer;
+    private final Integer category;
 
 
     public Question(String description, String[] options, String correctAnswer, Integer category) {
@@ -30,33 +30,15 @@ public class Question {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String[] getOptions() {
         return options;
     }
 
-    public void setOptions(String[] options) {
-        this.options = options;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
 
     public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
 
     /**
      * Determina si la respuesta es correcta o no.
@@ -65,6 +47,6 @@ public class Question {
      * @return true o false, si es correcta
      */
     public Boolean validateAnswer(Integer userAnswer){
-        return Objects.equals(options[userAnswer].toString(), this.correctAnswer);
+        return Objects.equals(options[userAnswer], this.correctAnswer);
     }
 }
