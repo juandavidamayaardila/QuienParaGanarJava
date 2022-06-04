@@ -2,6 +2,14 @@ package com.co.sofkau.utilities;
 
 import com.co.sofkau.utilities.interfaces.IGame;
 
+/**
+ * Clase que representa el juego
+ *
+ *  @version  01.02.003 03/06/2022
+ *  @author JD-Amaya
+ *  @since 01.
+ *
+ */
 public class Game implements IGame {
     @Override
     public Boolean validateAnswer() {

@@ -19,6 +19,8 @@ public class Main {
 
     private static List<Player> listPlayer = new ArrayList<>();
 
+    private static int flagGeneral = 0;
+
     public static void main(String[] args) {
         init();
     }
@@ -31,10 +33,11 @@ public class Main {
 
         while (Boolean.TRUE.equals(flag)) {
             try {
-                messages.showWelcome();
-                player.setName(scanner.getString());
-                player.setScore(0);
-
+                if(flagGeneral == 0) {
+                    messages.showWelcome();
+                    player.setName(scanner.getString());
+                    player.setScore(0);
+                }
                 messages.showMenu();
                 flag = selectOption(scanner.getString(), player);
             } catch (MyException myException) {
@@ -58,6 +61,7 @@ public class Main {
             case "4":
                 outGame();
                 break;
+
             default:
                 messages.pressAnyKeyToContinue();
         }
@@ -95,15 +99,15 @@ public class Main {
     }
 
     private static void showRanking(){
-
+        messages.showMessage("prueba");
         //messages.showHistory(daoPlayer.getPlayers());
-
+        flagGeneral = 1;
     }
 
     private static void saveHistoy(Player player, Integer scoreFinal){
-
-        player.setScore(scoreFinal);
-        listPlayer.add(player);
+        messages.showMessage("prueba");
+        //player.setScore(scoreFinal);
+        //listPlayer.add(player);
         //daoPlayer.savePlayers();
     }
     private static void restart(){
@@ -111,6 +115,6 @@ public class Main {
     }
 
     private static void outGame(){
-
+        flagGeneral = 0;
     }
 }

@@ -6,8 +6,17 @@ import com.co.sofkau.utilities.Question;
 import org.jboss.logging.Logger;
 
 import java.util.ArrayList;
-import java.util.List;
 
+
+/**
+ * Clase que centraliza todos los mensajes que se van a mostrar al usuario
+ * por consola
+ *
+ *  @version  01.02.003 03/06/2022
+ *  @author JD-Amaya
+ *  @since 01.
+ *
+ */
 public class Message {
 
     private static final Logger logger = Logger.getLogger(Message.class);
@@ -17,16 +26,15 @@ public class Message {
     }
 
     public void showWelcome(){
-        logger.info("""
-                BIENVENIDO A QUIEN QUIERE GANAR 
-                Por favor ingrese su nombre..""");
+        logger.info("BIENVENIDO A QUIEN QUIERE GANAR\n" +
+                    "Por favor ingrese su nombre..");
     }
 
     public void showMenu() {
         logger.info("""
-                BIENVENIDO A QUIEN QUIERE GANAR 
+                BIENVENIDO A QUIEN QUIERE GANAR
                 1 - Jugar
-                2 - Ranking de juego 
+                2 - Ranking de juego
                 3 - Reiniciar juego
                 4 - Salir""");
     }
@@ -52,8 +60,8 @@ public class Message {
 
     public void showMessageQuestionCorrect(Player player, Integer score) {
         logger.info("""
-                **************** Respuesta Correcta  !!!  **************** 
-                su puntaje es: """+score);
+                **************** Respuesta Correcta  !!!  ****************
+                su puntaje es:"""+score);
     }
 
     public void showMessageQuestionInCorrect(Player player) {
