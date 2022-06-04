@@ -60,9 +60,10 @@ public class Message {
     public void showHistory(ArrayList<Player> listJuagadores){
         logger.info("Rancking de juego :");
 
+        /*
         listJuagadores.stream().forEach( player -> {
             logger.info(player.toString());
-        });
+        });*/
     }
 
     public void showMessage(String message) {

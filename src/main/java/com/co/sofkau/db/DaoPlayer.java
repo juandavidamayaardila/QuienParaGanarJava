@@ -27,6 +27,9 @@ public class DaoPlayer extends DAO{
 
         try {
             //lectura de datos
+            if (Boolean.FALSE.equals(txtPlayers.exists())){
+                createFile();
+            }
             BufferedReader scan = new BufferedReader(new FileReader(txtPlayers.getName()));
             String s;
             String s2 = "";
@@ -50,7 +53,16 @@ public class DaoPlayer extends DAO{
 
         return this.playerArrayList;
     }
-    
+
+    private void createFile(){
+        try {
+            FileWriter file = new FileWriter("players.txt");
+            file.close();
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+    }
+
     public void savePlayers(File file, ArrayList<Player> players) {
 
         PrintWriter output = null;
